@@ -1,0 +1,55 @@
+# this is a single actor
+actor:
+	short-name: John         # used to show in list etc
+	long-name: John Moriarly # used where there's more space
+	initiative-modifier: -3  # coz John is slow
+	current-initiative: 11   # coz for the curent fight John rolled 14
+	properties:
+
+		Alignment:
+			type: short-text
+			short-name: Align
+			long-name: Alignment
+			variance: fixed
+			initial-value: Evil
+			# no current value is ok, it defaults to the initial value
+
+		Defence-AC:
+			group: Defence
+			type: number
+			short-name: AC
+			long-name: Armour Class
+			variance: fixed
+			initial-value: 18
+			current-value: 18
+
+		Defence-Fortitude:
+			group: Defence
+			type: number
+			short-name: Fort
+			long-name: Fortitude
+			variance: fixed
+			initial-value: 15
+			current-value: 15
+
+		HitPoints:
+			# no group
+			type: number
+			short-name: HP
+			long-name: Hit Points
+			variance: varies
+			initial-value: 15
+			current-value: 6
+
+		Speed:
+			# no group
+			type: number
+			short-name: Spd
+			long-name: Speed
+			variance: fixed
+			initial-value: 6
+			current-value: 6
+
+
+
+
