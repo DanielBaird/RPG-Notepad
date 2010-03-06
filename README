@@ -2,3 +2,75 @@ RPG-Notepad
 
 git read-only:   git://github.com/DanielBaird/RPG-Notepad.git 
 website:         http://rpgnotepad.com/
+
+###########################################################################
+
+UBUNTU Install Guide
+
+Tested on Ubuntu 9.10 (x64)
+
+
+
+sudo apt-get install apache2                                          # Install apache2
+
+sudo apt-get install ruby                                             # Install ruby
+sudo apt-get install ruby-dev                                         # Install ruby-dev
+sudo apt-get install ruby-gems1.8                                     # Install ruby gems
+
+
+export PATH=$PATH:$HOME/.gem/ruby/1.8/bin                             # Add ruby gems to your path
+
+sudo gem install rake                                                 # Install rake
+sudo gem install sinatra                                              # Install sinatra
+sudo gem install passenger                                            # Install passenger
+
+passenger-install-apache2-module                                      # Setup passenger  (Follow on screen instructions)
+
+# Passenger will ask you to add files to end of apache config file
+# Open conf with following command, and add lines to end of file.
+sudo vim /etc/apache2/apache2.conf
+
+
+sudo vim vim  /etc/apache2/sites-available/default                   # Open sites-available to add rpgnotepad
+
+# The following is the bottom of the file
+# Add the lines marked with + to the file. ( Don't add the + symbols though).
+
+#######################################################
+ 
+      Alias /doc/ "/usr/share/doc/"
+     <Directory "/usr/share/doc/">
+         Options Indexes MultiViews FollowSymLinks
+          AllowOverride None
+          Order deny,allow
+          Deny from all
+          Allow from 127.0.0.0/255.0.0.0 ::1/128
+      </Directory>
+
++     RackBaseURI /rpgnotepad
++     <Directory /var/www/rpgnotepad>
++         Options -MultiViews
++     </Directory>
+
+</VirtualHost>
+
+############### EOF (END OF FILE #####################
+
+cd ~                                                                                  # Change to your home directory
+
+mkdir RPG-Notepad
+
+wget http://github.com/DanielBaird/RPG-Notepad/zipball/master -O RPG-Notepad.zip      # Download RPG-Notepad
+unzip RPG-Notepad.zip                                                                 # Unzip RPG-Notepad
+rm RPG-Notepad.zip                                                                    # Remove the old .zip
+mv DanielBaird-RPG-Notepad*/* RPG-Notepad                                             # Move the unzipped files to a known location
+
+sudo ln -s ~/RPG-Notepad/code/rpgnotepad/public/ /var/www/rpgnotepad                  # Setup the link between RPG-Notepad and the apache server
+
+sudo apache2ctl restart                                                               # Restart apache to make changes come into effect
+
+
+
+## End of UBNUTU Install Guide
+
+###########################################################################
