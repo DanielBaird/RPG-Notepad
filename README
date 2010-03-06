@@ -70,6 +70,8 @@ sudo ln -s ~/RPG-Notepad/code/rpgnotepad/public/ /var/www/rpgnotepad            
 sudo apache2ctl restart                                                               # Restart apache to make changes come into effect
 
 
+# That's it, you're done.
+# Go to http://localhost/rpgnotepad/ and test your install
 
 ## End of UBNUTU Install Guide
 
