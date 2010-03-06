@@ -64,6 +64,7 @@ wget http://github.com/DanielBaird/RPG-Notepad/zipball/master -O RPG-Notepad.zip
 unzip RPG-Notepad.zip                                                                 # Unzip RPG-Notepad
 rm RPG-Notepad.zip                                                                    # Remove the old .zip
 mv DanielBaird-RPG-Notepad*/* RPG-Notepad                                             # Move the unzipped files to a known location
+rm -r DanielBaird-RPG-Notepad*                                                        # Remove the original unzipped folder
 
 sudo ln -s ~/RPG-Notepad/code/rpgnotepad/public/ /var/www/rpgnotepad                  # Setup the link between RPG-Notepad and the apache server
 
