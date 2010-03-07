@@ -72,11 +72,16 @@ end
 # get methods ============================================================
 
 get '/?' do
+  # TODO: this should be some kind of menu or login or something. Hmm...
   "RPG Notepad v#{$version}"
 end
 # ------------------------------------------------------------------------
 get '/campaigns/?' do
-  # return a list of the campaigns available
+  # return a list of the campaigns available, including the URL and campaign name.
+  # e.g:
+  # /rpgnotepad/campaign/1234: Daniel's D&D 4e Campaign
+  # /rpgnotepad/campaign/3456: Ruins of the Galactic Empire
+
   result = {}
   $data[:campaigns].each do |cam_id, cam_info|
     result[campaign_url cam_id] = cam_info[:name]
@@ -85,16 +90,27 @@ get '/campaigns/?' do
 end
 # ------------------------------------------------------------------------
 get '/campaign/:cam_id/?' do
-  # return info about a given campaign
+  # return info about a given campaign; includes pcs (each with pc url, 
+  # player url, and character name), and TODO other stuff....
+  # e.g:
+  # name: Daniel's D&D 4e Campaign
+  # playercharacters: 
+  #   /rpgnotepad/campaign/1234/pc/246: 
+  #     player: /rpgnotepad/user/112233
+  #     character: Theosophus Winterfall
+
   cam_id = params[:cam_id].to_i rescue 0
   campaign = $data[:campaigns][cam_id]
+  # if no campaign found with that id, bail with a 404
   throw :halt, [404, "Campaign with id '#{cam_id}' was not found."] unless campaign
   result = {}
   result['name'] = campaign[:name]
+  # include pcs
   result['playercharacters'] = {}
   campaign[:playercharacters].each do |pc_id, pc|
     result['playercharacters'][pc_url(cam_id, pc_id)] = { 'player' => user_url(pc[:player]), 'character' => pc[:name] }
   end
+  # include TODO other stuff...
 
   YAML.dump result
 end
