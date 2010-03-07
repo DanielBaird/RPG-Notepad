@@ -69,6 +69,19 @@ def pc_url cam_id, pc_id
   "#{$root_path}/campaign/#{cam_id}/pc/#{pc_id}"
 end
 
+def as_xml(node, content, node_id)
+  xml = ""
+  if node_id
+    xml += "<#{node} id=\"#{node_id}\"}>"
+  else
+    xml += "<#{node}>"
+  end
+  self.keys.each do |key|
+    # umm....
+  end
+  xml += "</#{node}>"
+end
+
 # get methods ============================================================
 
 get '/?' do
