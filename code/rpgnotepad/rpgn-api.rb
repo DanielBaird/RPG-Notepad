@@ -1,6 +1,7 @@
 
 require 'rubygems'
 require 'sinatra'
+require 'nokogiri'
 require 'yaml'
 
 $version = '0.1.20090302'
@@ -32,10 +33,11 @@ $data = {
           },
         },
       },
-      :nonplayers => {
+      :nonplayercharacters => {
         357 => {
+          :name => "Orc 1",
+          :abbreviated_name => "O1",
           :properties => {
-            "Name" => "Orc1",
             "Hit Points" => {
               :max => 100,
               :current => 77,
@@ -60,26 +62,27 @@ $data = {
 def campaign_url cam_id
   "#{$root_path}/campaign/#{cam_id}"
 end
-
+# ------------------------------------------------------------------------
 def user_url user_id
   "#{$root_path}/user/#{user_id}"
 end
-
+# ------------------------------------------------------------------------
 def pc_url cam_id, pc_id
   "#{$root_path}/campaign/#{cam_id}/pc/#{pc_id}"
 end
-
-def as_xml(node, content, node_id)
-  xml = ""
-  if node_id
-    xml += "<#{node} id=\"#{node_id}\"}>"
+# ------------------------------------------------------------------------
+def as_xml(content, parent_name = "xml", indent = 0)
+  xml = "#{"\t" * indent}<#{parent_name}>"
+  if content.respond_to? "each_key"
+    content.each_key do |key|
+      xml += as_xml(content[key], key, indent+1)
+    end
   else
-    xml += "<#{node}>"
+    xml += "#{content}"
   end
-  self.keys.each do |key|
-    # umm....
-  end
-  xml += "</#{node}>"
+  xml += "</#{parent_name}>\n"
+  
+  xml
 end
 
 # get methods ============================================================
@@ -87,6 +90,14 @@ end
 get '/?' do
   # TODO: this should be some kind of menu or login or something. Hmm...
   "RPG Notepad v#{$version}"
+  xml = %{
+<testnode id="id for test node">
+  <innernode>text inside inner node</innernode>
+  <node3><node4>inside n4</node4></node3>
+</testnode>
+  }
+  b = Nokogiri::XML(xml)
+  return "<pre>#{b}</pre><hr><pre>#{b.to_yaml}</pre>"
 end
 # ------------------------------------------------------------------------
 get '/campaigns/?' do
@@ -100,6 +111,7 @@ get '/campaigns/?' do
     result[campaign_url cam_id] = cam_info[:name]
   end
   YAML.dump result
+  as_xml result
 end
 # ------------------------------------------------------------------------
 get '/campaign/:cam_id/?' do
