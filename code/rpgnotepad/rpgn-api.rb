@@ -4,6 +4,8 @@ require 'sinatra'
 require 'nokogiri'
 require 'yaml'
 
+require 'rpgn-api-objects/character'
+
 $version = '0.1.20090302'
 
 $root_path = "/rpgnotepad"
@@ -138,6 +140,11 @@ get '/campaign/:cam_id/?' do
   # include TODO other stuff...
 
   YAML.dump result
+end
+# ------------------------------------------------------------------------
+get '/campaign/:cam_id/pc/:pc_id/?' do
+  pc = PlayerCharacter.new
+  pc.to_s
 end
 # ------------------------------------------------------------------------
 get '/campaign/:cam_id/encounter/:enc_id/?' do
