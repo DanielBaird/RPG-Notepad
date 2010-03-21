@@ -2,7 +2,7 @@
 require 'dm-core'
 
 # tell datamapper to log to stdout
-DataMapper::Logger.new($STDOUT, :debug)
+DataMapper::Logger.new($stdout, :debug)
 
 # use an in-memory sqlite db for now..
 DataMapper.setup(:default, 'sqlite3::memory:')
