@@ -4,12 +4,13 @@ require 'sinatra'
 require 'nokogiri'
 require 'yaml'
 
-require 'rpgn-api-objects/character'
+require 'rpgn-api-objects/objects'
 
-$version = '0.1.20090302'
+$version = '0.1.20100404'
 
 $root_path = "/rpgnotepad"
 
+=begin
 $data = {
   :users => {
     112233 => {
@@ -58,14 +59,19 @@ $data = {
     },
   },
 }
+=end
 
 # helper methods =========================================================
 
-def campaign_url cam_id
-  "#{$root_path}/campaign/#{cam_id}"
+def rpgn_api_url path
+  "#{$root_path}/api/#{path}"
 end
 # ------------------------------------------------------------------------
-def user_url user_id
+def campaign_api_url cam_id
+  "#{$root_path}/api/campaign/#{cam_id}"
+end
+# ------------------------------------------------------------------------
+def user_api_url user_id
   "#{$root_path}/user/#{user_id}"
 end
 # ------------------------------------------------------------------------
@@ -92,17 +98,39 @@ end
 get '/?' do
   # TODO: this should be some kind of menu or login or something. Hmm...
   "RPG Notepad v#{$version}"
-  xml = %{
-<testnode id="id for test node">
-  <innernode>text inside inner node</innernode>
-  <node3><node4>inside n4</node4></node3>
-</testnode>
-  }
-  b = Nokogiri::XML(xml)
-  return "<pre>#{b}</pre><hr><pre>#{b.to_yaml}</pre>"
 end
 # ------------------------------------------------------------------------
-get '/campaigns/?' do
+get '/api/campaign/:cam_id/pc/:pc_id/?' do
+  pc = PlayerCharacter.new
+  pc.to_s
+end
+# ------------------------------------------------------------------------
+get '/api/campaign/:cam_id/encounter/:enc_id/?' do
+  "got campaign '#{params[:cam_id]}', group '#{params[:enc_id]}'"
+end
+# ------------------------------------------------------------------------
+#
+# the good stuff is below.  everything else is crap.
+#
+# ========================================================================
+# == client ==============================================================
+# ========================================================================
+#
+get '/campaign/new/?' do
+  %^
+    <form action="#{rpgn_api_url 'campaigns'}" method="post">
+      <label>campaign name: <input name="name" type="text" /></label>
+    </form>
+  ^
+end
+
+#
+# ========================================================================
+# == API =================================================================
+# ========================================================================
+#
+# ------------------------------------------------------------------------
+get '/api/campaigns/?' do
   # return a list of the campaigns available, including the URL and campaign name.
   # e.g:
   # /rpgnotepad/campaign/1234: Daniel's D&D 4e Campaign
@@ -116,7 +144,16 @@ get '/campaigns/?' do
   as_xml result
 end
 # ------------------------------------------------------------------------
-get '/campaign/:cam_id/?' do
+post '/api/campaigns/?' do
+  cam = Campaign.new(:name => params[:name])
+  if cam.save
+    campaign_api_url(cam.id)
+  else
+    "problem!"
+  end
+end
+# ------------------------------------------------------------------------
+get '/api/campaign/:cam_id/?' do
   # return info about a given campaign; includes pcs (each with pc url, 
   # player url, and character name), and TODO other stuff....
   # e.g:
@@ -125,31 +162,13 @@ get '/campaign/:cam_id/?' do
   #   /rpgnotepad/campaign/1234/pc/246: 
   #     player: /rpgnotepad/user/112233
   #     character: Theosophus Winterfall
-
-  cam_id = params[:cam_id].to_i rescue 0
-  campaign = $data[:campaigns][cam_id]
-  # if no campaign found with that id, bail with a 404
+  
+  cam_id = params[:cam_id].to_i rescue nil
+  
+  campaign = Campaign.get cam_id
   throw :halt, [404, "Campaign with id '#{cam_id}' was not found."] unless campaign
-  result = {}
-  result['name'] = campaign[:name]
-  # include pcs
-  result['playercharacters'] = {}
-  campaign[:playercharacters].each do |pc_id, pc|
-    result['playercharacters'][pc_url(cam_id, pc_id)] = { 'player' => user_url(pc[:player]), 'character' => pc[:name] }
-  end
-  # include TODO other stuff...
-
-  YAML.dump result
+  
+  campaign.to_xml
+  
 end
 # ------------------------------------------------------------------------
-get '/campaign/:cam_id/pc/:pc_id/?' do
-  pc = PlayerCharacter.new
-  pc.to_s
-end
-# ------------------------------------------------------------------------
-get '/campaign/:cam_id/encounter/:enc_id/?' do
-  "got campaign '#{params[:cam_id]}', group '#{params[:enc_id]}'"
-end
-# ------------------------------------------------------------------------
-
-

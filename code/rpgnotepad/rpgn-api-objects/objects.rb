@@ -5,12 +5,15 @@ require 'dm-core'
 DataMapper::Logger.new($stdout, :debug)
 
 # use an in-memory sqlite db for now..
-DataMapper.setup(:default, 'sqlite3::memory:')
+#DataMapper.setup(:default, 'sqlite3::memory:')
+DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/rpgn.sqlite3")
 
 # ------------------------------------------------------------------------
 class User
   
   include DataMapper::Resource
+  
+  property :id, Serial
   
 end
 # ------------------------------------------------------------------------
@@ -20,8 +23,25 @@ class Campaign
   
   has n, :players
   has n, :encounters
-  has n, :nonplayercharacters
   
+  property :id, Serial
+  property :name, String
+  
+  def to_xml
+    xml = %{
+<campaign id="#{self.id}">
+  <name>#{self.name}</name>
+  <players>}
+    self.players.each do |player|
+      xml << %{
+    <player url="#{player_api_url player.id}" />
+}
+    end
+    xml << %{
+  </players>
+</campaign>
+}
+  end
 end
 # ------------------------------------------------------------------------
 class Player
@@ -31,6 +51,8 @@ class Player
   belongs_to :campaign
   has n, :playercharacters
   
+  property :id, Serial
+
 end
 # ------------------------------------------------------------------------
 class Encounter
@@ -41,10 +63,12 @@ class Encounter
   
   belongs_to :campaign
   has n, :nonplayercharacters
+
+  property :id, Serial
   
 end
 # ------------------------------------------------------------------------
-class PlayerCharacter
+class Playercharacter
   
   include DataMapper::Resource
   
@@ -62,7 +86,7 @@ class PlayerCharacter
   
 end
 # ------------------------------------------------------------------------
-class NonPlayerCharacter
+class Nonplayercharacter
   
   include DataMapper::Resource
   
@@ -73,8 +97,9 @@ class NonPlayerCharacter
   property :abbreviated_name, String
   
   def to_s
-    "A Player Character"
+    "A Non Player Character"
   end
   
 end
 # ------------------------------------------------------------------------
+DataMapper.auto_upgrade!

@@ -3,6 +3,6 @@ require 'sinatra'
 
 set :environment, :development
 
-require 'rpgn-api.rb'
+require 'rpgn.rb'
 
 run Sinatra::Application
