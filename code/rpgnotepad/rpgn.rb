@@ -10,57 +10,6 @@ $version = '0.1.20100404'
 
 $root_path = "/rpgnotepad"
 
-=begin
-$data = {
-  :users => {
-    112233 => {
-      :name => "Daniel",
-      :abbreviated_name => "Dan",
-      :characters => [ 246 ],
-      :runs_campaigns => [ 1234 ],
-    }
-  },
-  :campaigns => {
-    1234 => {
-      :name => "Daniel's D&D 4e Campaign",
-      :playercharacters => {
-        246 => {
-          :player => 112233,
-          :name => "Theosophus Winterfall",
-          :abbreviated_name => "Theo",
-          :properties => {
-            "Hit Points" => {
-              :max => 33,
-              :current => 22,
-            },
-          },
-        },
-      },
-      :nonplayercharacters => {
-        357 => {
-          :name => "Orc 1",
-          :abbreviated_name => "O1",
-          :properties => {
-            "Hit Points" => {
-              :max => 100,
-              :current => 77,
-            },
-          },
-        },
-      },
-      :encounters => {
-        5678 => {
-          :parties => {
-            "orcs" => [ 357 ],
-            "players" => [ 246 ],
-          },
-        },
-      },
-    },
-  },
-}
-=end
-
 # helper methods =========================================================
 
 def rpgn_api_url path
