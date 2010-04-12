@@ -85,15 +85,20 @@ get '/api/campaigns/?' do
   # /rpgnotepad/campaign/1234: Daniel's D&D 4e Campaign
   # /rpgnotepad/campaign/3456: Ruins of the Galactic Empire
 
-  result = {}
-  $data[:campaigns].each do |cam_id, cam_info|
-    result[campaign_url cam_id] = cam_info[:name]
+  campaigns = Campaign.all
+  result = "<campaigns>\n"
+  campaigns.each do |cam|
+    result << cam.to_xml(:list)
+    result << "\n"
   end
-  YAML.dump result
-  as_xml result
+  result << "</campaigns>\n"
 end
 # ------------------------------------------------------------------------
 post '/api/campaigns/?' do
+  # accept a post with campaign info, and add it as a new campaign.
+  # needs:
+  # - name
+  # - game runner
   cam = Campaign.new(:name => params[:name])
   if cam.save
     campaign_api_url(cam.id)
