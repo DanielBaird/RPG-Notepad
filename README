@@ -31,7 +31,7 @@ passenger-install-apache2-module                                      # Setup pa
 sudo vim /etc/apache2/apache2.conf
 
 
-sudo vim vim  /etc/apache2/sites-available/default                   # Open sites-available to add rpgnotepad
+sudo vim  /etc/apache2/sites-available/default                   # Open sites-available to add rpgnotepad
 
 # The following is the bottom of the file
 # Add the lines marked with + to the file. ( Don't add the + symbols though).
