@@ -1,5 +1,6 @@
 
 require 'dm-core'
+require 'dm-migrations'
 
 # tell datamapper to log to stdout
 DataMapper::Logger.new($stdout, :debug)
