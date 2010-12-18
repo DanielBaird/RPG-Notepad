@@ -22,7 +22,7 @@ function UniqueId() {
 
 // A text field
 // A text field has a title, a description and a default value.
-// It can be changed at any time during the actors turn, and after the actors time.
+// It can be changed at any time during the actor's turn, and after the actor's time.
 function TextField(title, description, defaultValue) {
 	this.inheritFrom = UniqueId;
 	this.inheritFrom();
