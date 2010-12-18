@@ -42,7 +42,7 @@ TextField.prototype.debugDisplay = function() {
 
 // *********************
 // Immutable Text Field - Constructor
-// e.g. Mood
+// e.g. Name, Origin, etc.
 // TODO
 
 // *********************
