@@ -37,29 +37,25 @@ function TextField(title, description, defaultValue) {
 
 // Define public methods 
 TextField.prototype.debugDisplay = function() {
-		alert( "TextField[" + this.id + "]: " + this.title + '(' + this.description + ') = ' + this.value );
+	alert( "TextField[" + this.id + "]: " + this.title + '(' + this.description + ') = ' + this.value );
 }
 
 // *********************
 // Immutable Text Field - Constructor
+// e.g. Mood
+// TODO
 
-// A text field whose fields cannot be changed once created.
-// A text field has a title, a description and a default value.
-function ImmutableTextField(title, description, defaultValue) {
-	this.inheritFrom = UniqueId;
-	this.inheritFrom();
+// *********************
+// Incrementing/Decrementing Numeric- Constructor
+// e.g. HP
+// TODO
 
-	this.title = title;
-	this.description = description;
-	this.value = defaultValue;
-} 
-
-// Immutable Text Field - Public Methods 
-ImmutableTextField.prototype.debugDisplay = function() {
-		alert( "TextField[" + this.id + "]: " + this.title + '(' + this.description + ') = ' + this.value );
-}
-
+// Note:
+// The following code is for testing purposes only
+// TODO: Remove the following code.
 $(document).ready(function() {
+		
+		alert( "DND Example: " );
 		var a = new TextField('HP', 'Hit Points', '0');
 		var b = new TextField('Mood', 'How the actor is feeling', '');
 		a.debugDisplay();
