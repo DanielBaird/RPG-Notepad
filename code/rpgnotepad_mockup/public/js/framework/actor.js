@@ -1,0 +1,35 @@
+
+// *********************
+// Actor - Constructor
+
+// An actor represents an rpg charactor.
+// An actor has many fields.
+// The actor will exist in a campaign
+// An actor must be able to exist within an 'initiative order' (or similar actor queue)
+function Actor(fields) { 
+	this.fields = fields;
+}
+
+Actor.prototype.draw = function() {
+	var actorDiv = $('<div></div>')
+	for ( var fieldIndex in this.fields ){
+		actorDiv.append( $('<p>' + this.fields[fieldIndex].id + '</p>') );
+		this.fields[fieldIndex].debugDisplay();	
+	}
+	$('body').append( actorDiv );
+}
+
+
+function Barbarian(name) {
+	var fields = new Array();
+	fields.push( new TextField('Name', "Name", name) );
+	fields.push( new NumericField('HP', "Hit Points", 20, 0, 20) );
+	this.actor = new Actor(fields);
+}
+
+$(document).ready(function() {
+		var bob_the_barbarian = new Barbarian('bob');
+		var bruce_the_barbarian = new Barbarian('bruce');
+		bob_the_barbarian.actor.draw();
+	}
+);

@@ -91,6 +91,7 @@ NumericField.prototype.decrement = function() {
 // Note:
 // The following code is for testing purposes only
 // TODO: Remove the following code.
+/*
 $(document).ready(function() {
 		alert( 'DND Example: ' );
 		var a = new NumericField('HP', 'Hit Points', 0, 0, 20);
@@ -106,3 +107,4 @@ $(document).ready(function() {
 		a.debugDisplay();
 	}
 );
+*/
