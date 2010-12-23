@@ -1,8 +1,17 @@
 
-div.NumericField {
-	background-color: red;
+span.Field {
+	margin: 2em;
 }
 
-div.TextField {
-	background-color: blue;
+span.TextField span.title, span.NumericField span.title {
+	padding-right: 0.6em;
+}
+
+span.NumericField span.value {
+}
+
+span.NumericField {
+}
+
+span.TextField {
 }

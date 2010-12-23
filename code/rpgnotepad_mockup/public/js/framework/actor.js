@@ -11,7 +11,7 @@ function Actor(fields) {
 }
 
 Actor.prototype.html = function() {
-	var actorDiv = $('<div></div>')
+	var actorDiv = $('<div class="Actor"></div>')
 	for ( var fieldIndex in this.fields ){
 		actorDiv.append( $( this.fields[fieldIndex].html() ) );
 		this.fields[fieldIndex].debugDisplay();	

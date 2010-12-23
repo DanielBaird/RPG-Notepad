@@ -41,13 +41,13 @@ TextField.prototype.debugDisplay = function() {
 }
 
 TextField.prototype.html = function() {
-	return_div = $( 
-		'<div class="TextField" title="' + this.description + '">' +
+	return_span = $( 
+		'<span class="Field TextField" title="' + this.description + '">' +
 		'<span class="title">' + this.title + '</span>' +
-		'<span class="value">' + this.value + '</span>' +
-		'</div>'
+		'<span class="value"><input type="text" size="30" value="' + this.value + '"/></span>' +
+		'</span>'
 	);
-	return return_div;
+	return return_span;
 }
 
 // *********************
@@ -99,13 +99,13 @@ NumericField.prototype.decrement = function() {
 }
 
 NumericField.prototype.html = function() {
-	return_div = $( 
-		'<div class="NumericField" title="' + this.description + '">' +
+	return_span = $( 
+		'<span class="Field NumericField" title="' + this.description + '">' +
 		'<span class="title">' + this.title + '</span>' +
-		'<span class="value">' + this.value + '</span>' +
-		'</div>'
+		'<span class="value"><input type="text" size="5" value="' + this.value + '"/></span>' +
+		'</span>'
 	);
-	return return_div;
+	return return_span;
 }
 
 // Note:
