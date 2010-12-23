@@ -40,6 +40,16 @@ TextField.prototype.debugDisplay = function() {
 	alert( 'TextField[' + this.id + ']: ' + this.title + '(' + this.description + ') = ' + this.value );
 }
 
+TextField.prototype.html = function() {
+	return_div = $( 
+		'<div class="TextField" title="' + this.description + '">' +
+		'<span class="title">' + this.title + '</span>' +
+		'<span class="value">' + this.value + '</span>' +
+		'</div>'
+	);
+	return return_div;
+}
+
 // *********************
 // Immutable Text Field - Constructor
 // e.g. Name, Origin, etc.
@@ -86,6 +96,16 @@ NumericField.prototype.increment = function() {
 // Decremend numeric field (helper method)
 NumericField.prototype.decrement = function() {
 	this.value -= 1;
+}
+
+NumericField.prototype.html = function() {
+	return_div = $( 
+		'<div class="NumericField" title="' + this.description + '">' +
+		'<span class="title">' + this.title + '</span>' +
+		'<span class="value">' + this.value + '</span>' +
+		'</div>'
+	);
+	return return_div;
 }
 
 // Note:

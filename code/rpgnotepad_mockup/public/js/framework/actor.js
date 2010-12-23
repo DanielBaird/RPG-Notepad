@@ -10,13 +10,17 @@ function Actor(fields) {
 	this.fields = fields;
 }
 
-Actor.prototype.draw = function() {
+Actor.prototype.html = function() {
 	var actorDiv = $('<div></div>')
 	for ( var fieldIndex in this.fields ){
-		actorDiv.append( $('<p>' + this.fields[fieldIndex].id + '</p>') );
+		actorDiv.append( $( this.fields[fieldIndex].html() ) );
 		this.fields[fieldIndex].debugDisplay();	
 	}
-	$('body').append( actorDiv );
+	return actorDiv;
+}
+
+Actor.prototype.draw = function() {
+	$('body').append( this.html() );
 }
 
 
