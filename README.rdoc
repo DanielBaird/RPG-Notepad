@@ -8,9 +8,9 @@
 * Daniel Baird
 
 == Installation
-RPG Notepad is built using the express web application framework, which runs on NodeJS.
+RPG Notepad is built using the express web application framework (http://expressjs.com). Express is a web development package for NodeJS (http://nodejs.org)
 
-To install the application, do the following:
+To install RPG Notepad, do the following:
 1. Go to http://nodejs.org/#download, and follow the instructions to install nodejs
 2. Download and extract the the zip for this repository https://github.com/DanielBaird/RPG-Notepad/zipball/master
 3. At the command-line, move into the +code/rpgnotepad_express+ folder
