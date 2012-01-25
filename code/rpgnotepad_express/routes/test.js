@@ -4,7 +4,7 @@
  */
 
 exports.unit_test = function(req, res){
-  res.render('unit_test', { layout: false, title: 'Unit Test' })
+  res.render('unit_test', { title: 'Unit Test' })
 };
 
 /*
@@ -12,5 +12,5 @@ exports.unit_test = function(req, res){
  */
 
 exports.render_test = function(req, res){
-  res.render('render_test', { layout: false, title: 'Render Test' })
+  res.render('render_test', { title: 'Render Test' })
 };

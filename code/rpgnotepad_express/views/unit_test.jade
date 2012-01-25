@@ -1,17 +1,10 @@
-!!! 5
-html
-  head
-    title Unit Test
+block append scripts
+  link(rel='stylesheet', href='/stylesheets/qunit/qunit.css')
+  script(type='text/javascript', src='/javascripts/qunit/qunit.js')
 
-    link(rel='stylesheet', href='/stylesheets/qunit/qunit.css')
-
-    block scripts
-      script(type='text/javascript', src='/javascripts/qunit/qunit.js')
-
-  body
-    h1#qunit-header RPG Notepad JS Unit Tests
-    h2#qunit-banner
-    #qunit-testrunner-toolbar
-    h2#qunit-userAgent
-    ol#qunit-tests
-    #qunit-fixture
+h1#qunit-header RPG Notepad JS Unit Tests
+h2#qunit-banner
+#qunit-testrunner-toolbar
+h2#qunit-userAgent
+ol#qunit-tests
+#qunit-fixture
