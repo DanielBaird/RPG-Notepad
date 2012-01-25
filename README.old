@@ -37,7 +37,7 @@ sudo vim  /etc/apache2/sites-available/default                   # Open sites-av
 # Add the lines marked with + to the file. ( Don't add the + symbols though).
 
 #######################################################
- 
+
       Alias /doc/ "/usr/share/doc/"
      <Directory "/usr/share/doc/">
          Options Indexes MultiViews FollowSymLinks
