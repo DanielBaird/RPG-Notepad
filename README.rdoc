@@ -1,11 +1,10 @@
 = RPG Notepad
-
-- git read-only:   git://github.com/DanielBaird/RPG-Notepad.git
-- website:         http://rpgnotepad.com
+* git (read-only):   git://github.com/DanielBaird/RPG-Notepad.git
+* website:         http://rpgnotepad.com
 
 == Authors:
-- Robert Pyke
-- Daniel Baird
+* Robert Pyke
+* Daniel Baird
 
 == Installation
 RPG Notepad is built using the express web application framework (http://expressjs.com). Express is a web development package for NodeJS (http://nodejs.org)
