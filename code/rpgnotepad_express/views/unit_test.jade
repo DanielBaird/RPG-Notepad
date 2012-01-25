@@ -1,7 +1,17 @@
-!!!
+!!! 5
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    title Unit Test
+
+    link(rel='stylesheet', href='/stylesheets/qunit/qunit.css')
+
+    block scripts
+      script(type='text/javascript', src='/javascripts/qunit/qunit.js')
+
   body
-    h1 Unit Test
+    h1#qunit-header RPG Notepad JS Unit Tests
+    h2#qunit-banner
+    #qunit-testrunner-toolbar
+    h2#qunit-userAgent
+    ol#qunit-tests
+    #qunit-fixture
