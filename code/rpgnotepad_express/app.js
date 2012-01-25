@@ -17,6 +17,14 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
+
+  // Tell the renderer to let us handle the layouts
+  // We do this so as we can do more advanced block manipulations in jade.
+  // e.g. block append head
+  // which wouldn't be possible with the default layout handling
+  app.set('view options', {
+    layout: false
+  });
 });
 
 app.configure('development', function(){

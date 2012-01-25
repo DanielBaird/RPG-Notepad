@@ -9,6 +9,17 @@ html
       script(type='text/javascript', src='/javascripts/jquery/jquery-1.7.1.min.js')
       //- jQueryUI
       script(type='text/javascript', src='/javascripts/jquery_ui/jquery-ui-1.8.17.custom.min.js')
+      //- Underscore
+      script(type='text/javascript', src='/javascripts/underscore/underscore_min_1_3_1.js')
+      //- Backbone
+      script(type='text/javascript', src='/javascripts/backbone/backbone_min_0_5_3.js')
 
     title= title
-  body!= body
+
+  body
+
+    block header
+
+    block content
+
+    block footer

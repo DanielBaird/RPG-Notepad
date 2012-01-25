@@ -1,10 +1,15 @@
-script
-  $(document).ready(function() {
-    $( "#dialog" ).dialog();
-  });
+extends layout
 
-h1 RPG Notepad JS Render Tests
+block append scripts
+  script
+    $(document).ready(function() {
+      $( "#dialog" ).dialog();
+    });
 
-#dialog(title="Basic")
-  p This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.
+block append content
+  h1 RPG Notepad JS Render Tests
 
+  #dialog(title="Basic")
+    p This is the default dialog which is useful for
+      displaying information. The dialog window can be moved, 
+      resized and closed with the 'x' icon.
