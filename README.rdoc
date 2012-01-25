@@ -15,8 +15,8 @@ To install the application, do the following:
 2. Download and extract the the zip for this repository https://github.com/DanielBaird/RPG-Notepad/zipball/master
 3. At the command-line, move into the +code/rpgnotepad_express+ folder
 4. Install the dependencies using +npm+ (node package manager) via the following command:
-  npm install -d
+   npm install -d
 5. Assuming you succesfully installed all the dependencies, start the application:
-  node app.js
+   node app.js
 6. The application should now be running on port 3000 (http://localhost:3000)
 
