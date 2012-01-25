@@ -1,7 +1,7 @@
 = RPG Notepad
 
 * git read-only:   git://github.com/DanielBaird/RPG-Notepad.git
-* website:         http://rpgnotepad.com/
+* website:         http://rpgnotepad.com
 
 == Authors:
 * Robert Pyke
