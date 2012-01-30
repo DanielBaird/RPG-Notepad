@@ -10,12 +10,14 @@
 RPG Notepad is built using the express web application framework (http://expressjs.com). Express is a web development package for NodeJS (http://nodejs.org)
 
 To install RPG Notepad, do the following:
-1. Go to http://nodejs.org/#download, and follow the instructions to install nodejs
-2. Download and extract the the zip for this repository https://github.com/DanielBaird/RPG-Notepad/zipball/master
-3. At the command-line, move into the +code/rpgnotepad_express+ folder
-4. Install the dependencies using +npm+ (node package manager) via the following command:
+1. Go to http://www.mongodb.org/downloads and download and install the mongodb distribution for your OS
+2. Start the mongod binary (+mongod+)
+3. Go to http://nodejs.org/#download, and follow the instructions to install nodejs
+4. Download and extract the the zip for this repository https://github.com/DanielBaird/RPG-Notepad/zipball/master
+5. At the command-line, move into the +code/rpgnotepad_express+ folder
+6. Install the dependencies using +npm+ (node package manager) via the following command:
       npm install -d
-5. Assuming you succesfully installed all the dependencies, start the application:
+7. Assuming you succesfully installed all the dependencies and started the mongo server, start the application:
       node app.js
-6. The application should now be running on port 3000 (http://localhost:3000)
+8. The application should now be running on port 3000 (http://localhost:3000)
 
