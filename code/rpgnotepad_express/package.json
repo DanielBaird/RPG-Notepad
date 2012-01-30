@@ -6,6 +6,6 @@
       "express": "2.5.5",
       "jade": ">= 0.0.1",
       "mongoose": "2.3.12",
-      "connect-mongodb": "1.1.1",
+      "connect-mongodb": "1.1.1"
   }
 }
