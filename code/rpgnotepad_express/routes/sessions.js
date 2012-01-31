@@ -70,7 +70,7 @@ exports.sessionsCreate= function(req, res) {
 
       // Remember me
       if (req.body.remember_me) {
-        var loginToken = new req.LoginToken({ email: user.email });
+        var loginToken = new req.app.LoginToken({ email: user.email });
         loginToken.save(function() {
           res.cookie('logintoken', loginToken.cookieValue, { expires: new Date(Date.now() + 2 * 604800000), path: '/' });
           req.flash('info', 'Welcome ' + user.email);
