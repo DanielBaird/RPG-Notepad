@@ -52,6 +52,7 @@ exports.dynamicHelpers = {
       }
     });
     return html;
-  }
+  },
+
 };
 
