@@ -57,7 +57,7 @@ exports.sessionsNew= function(req, res){
 
 exports.sessionsDestroy= function(req, res){
   if (req.session) {
-    req.LoginToken.remove({ email: req.currentUser.email }, function() {});
+    req.app.LoginToken.remove({ email: req.currentUser.email }, function() {});
     res.clearCookie('logintoken');
     req.session.destroy(function() {});
   }

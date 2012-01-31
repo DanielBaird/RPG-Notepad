@@ -54,5 +54,9 @@ exports.dynamicHelpers = {
     return html;
   },
 
+  currentUser: function(req, res) {
+    return req.currentUser;
+  },
+
 };
 
