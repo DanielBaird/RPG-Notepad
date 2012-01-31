@@ -46,7 +46,6 @@ function setUserFromLoginToken(req, res, next) {
 //
 // If it isn't, redirects user to sessions/new
 function authUser(req, res, next) {
-  console.log(req.currentUser);
   if(req.currentUser === undefined) {
     res.redirect('/sessions/new');
   } else {
