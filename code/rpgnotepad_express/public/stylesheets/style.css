@@ -1,8 +1,43 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
 }
+
+#header ul li.right {
+  float: right;
+}
+
+#header a {
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+  text-shadow: #f0f0f0 0 1px 0;
+}
+
+.flash {
+  width: 100%;
+  opacity: 0.75;
+  clear: both;
+}
+
+.flash span {
+  margin-right: .7em;
+  float: left;
+}
+
+.flash .ui-corner-all {
+  width: 30em;
+  padding: 0 5px;
+  margin: 2em auto 0 auto;
+  opacity: 0.9;
+  font-weight: bold;
+  -moz-box-shadow: 0 0 8px #111;
+  -webkit-box-shadow: 0 0 8px #111;
+  box-shadow: 0 0 8px #111;
+}
+
+

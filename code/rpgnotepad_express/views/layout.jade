@@ -23,11 +23,12 @@ html
 
     block header
       #header
-        h1
-          a(href='/') #{nameAndVersion(appName, version)}
+        h1= nameAndVersion(appName, version)
+
         - if (typeof currentUser !== 'undefined')
-          li.right
-            a#logout(href='/sessions') Log Out
+          ul
+            li.right
+              a#logout(href='/sessions') Log Out
       !{flashMessages}
 
     block content
