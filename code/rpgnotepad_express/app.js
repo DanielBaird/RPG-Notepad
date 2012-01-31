@@ -101,7 +101,7 @@ userModels.defineModels(mongoose, function() {
 })
 
 // Standard Routes
-app.get('/', userModels.loadUser, routes.index);
+app.get('/', sessionRoutes.loadUser, routes.index);
 
 // Testing Routes
 app.get('/test/unit', testingRoutes.unit_test);
@@ -110,7 +110,7 @@ app.get('/test/render', testingRoutes.render_test);
 // Sessions Routes
 app.get('/sessions/new', sessionRoutes.sessionsNew);
 app.post('/sessions', sessionRoutes.sessionsCreate);
-app.del('/sessions', userModels.loadUser, sessionRoutes.sessionsDestroy);
+app.del('/sessions', sessionRoutes.loadUser, sessionRoutes.sessionsDestroy);
 
 // Users Routes
 
