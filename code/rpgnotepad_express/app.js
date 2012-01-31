@@ -24,6 +24,7 @@ var routes = require('./routes/index.js');
 var testingRoutes = require('./routes/test.js');
 var sessionRoutes = require('./routes/sessions.js');
 var usersRoutes = require('./routes/users.js');
+var gamesRoutes = require('./routes/games.js');
 
 // Create the server
 var app = module.exports = express.createServer();
@@ -101,7 +102,10 @@ userModels.defineModels(mongoose, function() {
 })
 
 // Standard Routes
-app.get('/', sessionRoutes.loadUser, routes.index);
+app.get('/', sessionRoutes.setUser, routes.index);
+
+// Games Routes
+app.get('/games', sessionRoutes.setUser, sessionRoutes.authUser, gamesRoutes.index);
 
 // Testing Routes
 app.get('/test/unit', testingRoutes.unit_test);
@@ -110,7 +114,7 @@ app.get('/test/render', testingRoutes.render_test);
 // Sessions Routes
 app.get('/sessions/new', sessionRoutes.sessionsNew);
 app.post('/sessions', sessionRoutes.sessionsCreate);
-app.del('/sessions', sessionRoutes.loadUser, sessionRoutes.sessionsDestroy);
+app.del('/sessions', sessionRoutes.setUser, sessionRoutes.authUser, sessionRoutes.sessionsDestroy);
 
 // Users Routes
 

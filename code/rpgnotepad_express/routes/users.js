@@ -2,7 +2,7 @@
  * GET the users new page.
  */
 exports.userNew = function(req, res){
-  res.render('users/new', {
+  res.render('users/new.jade', {
     title: 'New User',
     user: new req.app.User()
   });

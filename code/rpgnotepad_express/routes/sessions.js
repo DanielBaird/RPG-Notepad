@@ -1,49 +1,59 @@
-function authenticateFromLoginToken(req, res, next) {
+function setUser(req, res, next) {
+  if (req.session.userId) {
+    req.app.User.findById(req.session.userId, function(err, user) {
+      if (user) {
+        req.currentUser = user;
+      }
+      next();
+    });
+  } else if (req.cookies.logintoken) {
+    setUserFromLoginToken(req, res, next);
+  } else {
+    next();
+  }
+}
+exports.setUser = setUser;
+
+function setUserFromLoginToken(req, res, next) {
   var cookie = JSON.parse(req.cookies.logintoken);
 
   req.app.LoginToken.findOne({ email: cookie.email,
                        series: cookie.series,
                        token: cookie.token }, (function(err, token) {
     if (!token) {
-      res.redirect('/sessions/new');
-      return;
-    }
+      next();
+    } else {
+      req.app.User.findOne({ email: token.email }, function(err, user) {
+        if (user) {
+          req.session.userId = user.id;
+          req.currentUser = user;
 
-    req.app.User.findOne({ email: token.email }, function(err, user) {
-      if (user) {
-        req.session.userId = user.id;
-        req.currentUser = user;
-
-        token.token = token.randomToken();
-        token.save(function() {
-          res.cookie('logintoken', token.cookieValue, { expires: new Date(Date.now() + 2 * 604800000), path: '/' });
+          token.token = token.randomToken();
+          token.save(function() {
+            res.cookie('logintoken', token.cookieValue, { expires: new Date(Date.now() + 2 * 604800000), path: '/' });
+            next();
+          });
+        } else {
           next();
-        });
-      } else {
-        res.redirect('/sessions/new');
-      }
-    });
+        }
+      });
+    }
   }));
 }
-exports.authenticateFromLoginToken = authenticateFromLoginToken;
 
-function loadUser(req, res, next) {
-  if (req.session.userId) {
-    req.app.User.findById(req.session.userId, function(err, user) {
-      if (user) {
-        req.currentUser = user;
-        next();
-      } else {
-        res.redirect('/sessions/new');
-      }
-    });
-  } else if (req.cookies.logintoken) {
-    authenticateFromLoginToken(req, res, next);
-  } else {
+// Expects setUser to have already been ran against the req.
+// Checks if req.currentUser is defined.
+//
+// If it isn't, redirects user to sessions/new
+function authUser(req, res, next) {
+  console.log(req.currentUser);
+  if(req.currentUser === undefined) {
     res.redirect('/sessions/new');
+  } else {
+    next();
   }
 }
-exports.loadUser = loadUser;
+exports.authUser = authUser;
 
 /*
  * GET the sessions new page.

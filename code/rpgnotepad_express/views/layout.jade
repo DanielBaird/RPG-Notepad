@@ -23,12 +23,15 @@ html
 
     block header
       #header
-        h1= nameAndVersion(appName, version)
+        h1
+          a#home(href='/') #{nameAndVersion(appName, version)}
 
-        - if (typeof currentUser !== 'undefined')
-          ul
+        ul
+          - if (typeof currentUser !== 'undefined')
             li.right
               a#logout(href='/sessions') Log Out
+          li
+            a#games(href='/games') Games
       !{flashMessages}
 
     block content
