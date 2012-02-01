@@ -37,19 +37,24 @@ app.helpers(helpers.helpers);
 app.dynamicHelpers(helpers.dynamicHelpers);
 
 
-// Set the db-uri variable for the database
-// Set it based on the deployment environment
-app.configure('development', function(){
-  app.set('db-uri', 'mongodb://localhost/rpg-notepad-development');
-});
+// If the env var MONGOHQ_URL is set, use it, otherwise run local.
+if ( process.env.MONGOHQ_URL !== undefined ) {
+  app.set('db-uri', process.env.MONGOHQ_URL);
+} else {
+  // Set the db-uri variable for the database
+  // Set it based on the deployment environment
+  app.configure('development', function(){
+    app.set('db-uri', 'mongodb://localhost/rpg-notepad-development');
+  });
 
-app.configure('production', function(){
-  app.set('db-uri', 'mongodb://localhost/rpg-notepad-production');
-});
+  app.configure('production', function(){
+    app.set('db-uri', 'mongodb://localhost/rpg-notepad-production');
+  });
 
-app.configure('test', function(){
-  app.set('db-uri', 'mongodb://localhost/rpg-notepad-test');
-});
+  app.configure('test', function(){
+    app.set('db-uri', 'mongodb://localhost/rpg-notepad-test');
+  });
+}
 
 
 // Configuration
