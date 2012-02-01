@@ -105,6 +105,7 @@ userModels.defineModels(mongoose, function() {
 app.get('/', sessionRoutes.setUser, routes.index);
 
 // Games Routes
+// TODO -> Consider nesting these routes under user
 app.get('/games', sessionRoutes.setUser, sessionRoutes.authUser, gamesRoutes.index);
 
 // Testing Routes
