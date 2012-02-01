@@ -17,7 +17,8 @@ a {
 }
 #header ul {
   list-style: none;
-  display: inline;
+  margin: 0.3em 0;
+  padding: 0;
 }
 
 #header ul li.right {
