@@ -5,9 +5,19 @@ body {
 a {
   color: #00B7FF;
 }
+#header {
+  background-color: #336;
+  padding: 0.3em;
+  margin: 0.3em 0;
+}
+
 #header h1 {
   font-size: 16px;
   font-weight: bold;
+}
+#header ul {
+  list-style: none;
+  display: inline;
 }
 
 #header ul li.right {
@@ -15,11 +25,16 @@ a {
 }
 
 #header a {
+  padding: 0.3em;
+  color: #333;
+  border-bottom: 2px dashed #003;
+  background-color: rgba(255, 255, 255, 0.8);
   font-size: 13px;
   font-weight: bold;
   text-decoration: none;
-  color: #333;
-  text-shadow: #f0f0f0 0 1px 0;
+}
+#header a:hover {
+  background-color: rgba(255, 255, 255, 0.95);
 }
 
 .flash {
