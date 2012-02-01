@@ -125,6 +125,7 @@ app.post('/users.:format?', usersRoutes.userCreate);
 app.get('/users/new', usersRoutes.userNew);
 
 // Start listening on port 3000
-app.listen(3000);
+var port = process.env.PORT || 3000;
+app.listen(port);
 // Log that we're up and running
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
