@@ -1,0 +1,19 @@
+<input type="text" ng-model="search" class="search-query" placeholder="Search">
+<table>
+  <thead>
+  <tr>
+    <th>Character</th>
+    <th>Description</th>
+    <th><a href="#/new"><i class="icon-plus-sign"></i></a></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="character in characters | filter:search | orderBy:'name'">
+    <td><a href="{{character.site}}" target="_blank">{{character.name}}</a></td>
+    <td>{{character.description}}</td>
+    <td>
+      <a href="#/edit/{{character._id.$oid}}"><i class="icon-pencil"></i></a>
+    </td>
+  </tr>
+  </tbody>
+</table>
