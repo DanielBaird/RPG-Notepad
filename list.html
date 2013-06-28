@@ -3,9 +3,12 @@
   <thead>
   <tr>
     <th>Character</th>
-    <th></th>
+    <th>Avatar</th>
     <th>Description</th>
-    <th><a href="#/new"><i class="icon-plus-sign"></i></a></th>
+    <th>HP</th>
+    <th>MAX HP</th>
+    <th>AC</th>
+    <th><a href="#/new"><i class="ui-icon ui-icon-plus"></i></a></th>
   </tr>
   </thead>
   <tbody>
@@ -13,6 +16,9 @@
     <td>{{character.name}}</td>
     <td><img src="{{character.image_url}}" alt="{{character.name}} profile image"></img></td>
     <td>{{character.description}}</td>
+    <td>{{character.hit_points}}</td>
+    <td>{{character.max_hit_points}}</td>
+    <td>{{character.armour_class}}</td>
     <td>
       <a href="#/edit/{{character._id.$oid}}"><i class="ui-icon ui-icon-pencil"></i></a>
     </td>

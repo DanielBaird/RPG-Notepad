@@ -17,6 +17,24 @@
   <label>Description</label>
   <textarea name="description" ng-model="character.description"></textarea>
 
+  <div class="control-group" ng-class="{error: myForm.hit_points.$invalid}">
+    <label>HP</label>
+    <input type="number" name="name" ng-model="character.hit_points" required>
+    <span ng-show="myForm.hit_points.$error.required" class="help-inline">Required</span>
+  </div>
+
+  <div class="control-group" ng-class="{error: myForm.max_hit_points.$invalid}">
+    <label>MAX HP</label>
+    <input type="number" name="name" ng-model="character.max_hit_points" required>
+    <span ng-show="myForm.max_hit_points.$error.required" class="help-inline">Required</span>
+  </div>
+
+  <div class="control-group" ng-class="{error: myForm.armour_class.$invalid}">
+    <label>AC</label>
+    <input type="number" name="name" ng-model="character.armour_class" required>
+    <span ng-show="myForm.armour_class.$error.required" class="help-inline">Required</span>
+  </div>
+
   <br>
   <a href="#/" class="btn">Cancel</a>
   <button ng-click="save()" ng-disabled="isClean() || myForm.$invalid"
