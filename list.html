@@ -3,16 +3,18 @@
   <thead>
   <tr>
     <th>Character</th>
+    <th></th>
     <th>Description</th>
     <th><a href="#/new"><i class="icon-plus-sign"></i></a></th>
   </tr>
   </thead>
   <tbody>
   <tr ng-repeat="character in characters | filter:search | orderBy:'name'">
-    <td><a href="{{character.site}}" target="_blank">{{character.name}}</a></td>
+    <td>{{character.name}}</td>
+    <td><img src="{{character.image_url}}" alt="{{character.name}} profile image"></img></td>
     <td>{{character.description}}</td>
     <td>
-      <a href="#/edit/{{character._id.$oid}}"><i class="icon-pencil"></i></a>
+      <a href="#/edit/{{character._id.$oid}}"><i class="ui-icon ui-icon-pencil"></i></a>
     </td>
   </tr>
   </tbody>

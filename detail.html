@@ -2,17 +2,16 @@
   <div class="control-group" ng-class="{error: myForm.name.$invalid}">
     <label>Name</label>
     <input type="text" name="name" ng-model="character.name" required>
-    <span ng-show="myForm.name.$error.required" class="help-inline">
-        Required</span>
+    <span ng-show="myForm.name.$error.required" class="help-inline">Required</span>
   </div>
 
-  <div class="control-group" ng-class="{error: myForm.site.$invalid}">
-    <label>Website</label>
-    <input type="url" name="site" ng-model="character.site" required>
-    <span ng-show="myForm.site.$error.required" class="help-inline">
-        Required</span>
-    <span ng-show="myForm.site.$error.url" class="help-inline">
-        Not a URL</span>
+  <div class="control-group" ng-class="{error: myForm.image_url.$invalid}">
+    <label>Image URL</label>
+    <input type="url" name="image_url" ng-model="character.image_url" required>
+    <span ng-show="myForm.image_url.$error.required" 
+        class="help-inline">Required</span>
+    <span ng-show="myForm.image_url.$error.url" 
+        class="help-inline">Not a URL</span>
   </div>
 
   <label>Description</label>

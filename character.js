@@ -27,7 +27,7 @@ function EditCtrl($scope, $location, $routeParams, Character) {
 
   Character.get({id: $routeParams.characterId}, function(character) {
     self.original = character;
-    $scope.character= new Character(self.original);
+    $scope.character = new Character(self.original);
   });
 
   $scope.isClean = function() {
