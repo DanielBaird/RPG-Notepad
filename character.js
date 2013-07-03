@@ -2,6 +2,7 @@ angular.module('character', ['mongolab']).
   config(function($routeProvider) {
     $routeProvider.
       when('/', {controller:ListCtrl, templateUrl:'list.html'}).
+      when('/cards', {controller:ListCtrl, templateUrl:'cards.html'}).
       when('/edit/:characterId', {controller:EditCtrl, templateUrl:'detail.html'}).
       when('/new', {controller:CreateCtrl, templateUrl:'detail.html'}).
       otherwise({redirectTo:'/'});
@@ -37,6 +38,7 @@ function EditCtrl($scope, $location, $routeParams, Character) {
   $scope.destroy = function() {
     self.original.destroy(function() {
       $location.path('/list');
+      $location.path('/cards');
     });
   };
 

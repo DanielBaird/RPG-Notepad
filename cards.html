@@ -1,0 +1,19 @@
+<input type="text" ng-model="search" class="search-query" placeholder="Search">
+
+<div ng-repeat="character in characters | filter: search | orderBy:'name'" class="cards">
+  <div class="card">
+    <div class="inner_card">
+      <p class='hit_points'>
+        <span class='hit_points'>{{character.hit_points}}</span>
+        <span class='max_hit_points'>{{character.max_hit_points}}</span>
+      </p>
+      <p class='armour_class'>
+        <span class='armour_class'>{{character.armour_class}}</span>
+      </p>
+      <img class="character_profile_image" src="{{character.image_url}}" alt="{{character.name}} profile image"></img>
+      <hr>
+      <h2>{{character.name}}</h2>
+      <p class='description'>{{character.description}}</p>
+    </div>
+  </div>
+</div>

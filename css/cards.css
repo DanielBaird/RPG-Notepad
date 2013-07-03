@@ -1,0 +1,223 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+.cards {
+    margin: 3em 5em;
+}
+
+.card {
+    /* animate transitions to and from this class */
+   -webkit-transition: all 0.5s ease;
+   -moz-transition: all 0.5s ease;
+   -o-transition: all 0.5s ease;
+   transition: all 0.5s ease;
+
+    float: left;
+    position: relative;
+    font-family: 'Petit Formal Script', cursive;
+
+    /*
+      ratio of a real playing card; 1.39
+      ratio of 285:196; 1.45
+      Provides a whole number of repeats (3 vertical 2 horizontal)
+      of actual pattern 
+    */
+    width: 15em;
+    height: 21.75em;
+    border: solid 1px midnightblue;
+    box-shadow: 5px 5px 15px #222;
+    border-radius: 0.3em;
+    background: white;
+}
+
+.card:hover {
+  background: midnightblue;
+}
+
+.unfocused {
+    top: 40px;
+    opacity: 0.3 !important;
+}
+
+.card.code.unfocused {
+    top: 50px;
+    z-index: 910;
+}
+
+.card.cv.unfocused {
+    top: 40px;
+    z-index: 909;
+}
+
+.card.blog.unfocused {
+    top: 75px;
+    z-index: 908;
+}
+
+a span {
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left: 0;
+
+    /* edit: added z-index */
+    z-index: 10000;
+
+    /* edit: fixes overlap error in IE7/8, 
+       make sure you have an empty gif */
+    background-image: url('empty.gif');
+}
+
+h1 {
+    font-family: 'Petit Formal Script', cursive;
+    text-align: center;
+    margin: 1.5em;
+}
+
+.inner_card {
+    position: absolute;
+    border: solid 3px midnightblue;
+
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+}
+
+.inner_card {
+    background-color:white;
+    background-size: 30px 30px, 90px 90px;
+    background-position: 0 0;
+/*
+    background-image: url("../img/card_background.jpg");
+
+    background-image:
+    radial-gradient(midnightblue 9px, transparent 10px),
+    repeating-radial-gradient(midnightblue 0, midnightblue 4px, transparent 5px, transparent 20px, midnightblue 21px, midnightblue 25px, transparent 26px, transparent 50px);
+
+
+    background-image:
+    -webkit-radial-gradient(midnightblue 9px, transparent 10px),
+    -webkit-repeating-radial-gradient(midnightblue 0, midnightblue 4px, transparent 5px, transparent 20px, midnightblue 21px, midnightblue 25px, transparent 26px, transparent 50px);
+
+    background-image: -moz-radial-gradient(midnightblue 9px, transparent 10px), -moz-repeating-radial-gradient(midnightblue 0pt, midnightblue 4px, transparent 5px, transparent 20px, midnightblue 21px, midnightblue 25px, transparent 26px, transparent 50px)
+*/
+
+}
+
+.cards .card {
+  margin: 1em;
+}
+
+.card p, .card span {
+  padding: none;
+  margin: none;
+}
+
+.card p.description {
+  padding: 0.4em 1em;
+  margin: 0;
+  font-size: small;
+}
+
+.card p.armour_class {
+    float: right;
+    clear: right;
+    font-size: small;
+    margin-right: 0.4em;
+}
+
+
+.card span.armour_class:before {
+    color: black;
+    content: "\2663";
+    margin-right: 0.4em;
+}
+
+.card p.hit_points {
+    float: left;
+    clear: left;
+    font-size: small;
+    margin-left: 0.4em;
+}
+
+.card span.hit_points:before {
+    color: red;
+    content: "\2665";
+    margin-right: 0.4em;
+    margin-left: 0.4em;
+    padding: none;
+}
+
+.card span.hit_points:after {
+    color: black;
+    content: "/";
+    margin-right: 0.1em;
+    margin-left: 0.1em;
+    padding: none;
+}
+
+.card img.character_profile_image {
+    width: 7em;
+    padding: 0.1em;
+    margin: 0.4em auto;
+    background-color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.card h2 {
+    text-align: center;
+    font-size: 16pt;
+    background: white;
+    margin: 0 auto;
+    padding: 0;
+    width: 8em;
+    color: black;
+    border-bottom: solid 2px midnightblue;
+}
+
+.card .leading:before {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+}
+
+.card .lagging:after {
+    -webkit-transform:rotate(180deg);
+    -moz-transform:rotate(180deg);
+    -o-transform:rotate(180deg);
+    -ms-transform:rotate(180deg);
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+
+.heart.leading:before, .heart.lagging:after,
+.diamond.leading:before, .diamond.lagging:after,
+.club.leading:before, .club.lagging:after {
+    padding: 0.5em;
+    border-radius: 45%;
+    background: white;
+    border: solid 2px midnightblue;
+    z-index: 1000;
+}
+
+.heart.leading:before, .heart.lagging:after {
+    color: red;
+    content: "\2665";
+}
+
+.diamond.leading:before, .diamond.lagging:after {
+    color: red;
+    content: "\2666";
+}
+
+.club.leading:before, .club.lagging:after {
+    color: black;
+    content: "\2663";
+}
+
