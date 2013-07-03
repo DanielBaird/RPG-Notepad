@@ -27,7 +27,7 @@
     height: 21.75em;
     border: solid 1px midnightblue;
     box-shadow: 5px 5px 15px #222;
-    border-radius: 0.3em;
+    border-radius: 5px;
     background: white;
 }
 
@@ -122,35 +122,44 @@ h1 {
   font-size: small;
 }
 
+.card div.icons p {
+    font-family: monospace;
+    font-size: small;
+
+    min-height: 30px;
+    text-align: center;
+    vertical-align: middle;
+
+    background-repeat: no-repeat;
+}
+
 .card p.armour_class {
     float: right;
     clear: right;
-    font-size: small;
     margin-right: 0.4em;
-}
-
-
-.card span.armour_class:before {
-    color: black;
-    content: "\2663";
-    margin-right: 0.4em;
+    padding-top: 6px;
+    /* Image licensed under cc */
+    background-image: url('images/shield.gif');
+    min-width: 24px;
 }
 
 .card p.hit_points {
+    padding-top: 6px;
+    color: white;
     float: left;
     clear: left;
-    font-size: small;
     margin-left: 0.4em;
+    margin-right: 0;
+
+    /* Image licensed under cc */
+    background-image: url('images/heart.png');
+    min-width: 29px;
+    min-height: 29px;
+    text-align: center;
+    vertical-align: middle;
 }
 
-.card span.hit_points:before {
-    color: red;
-    content: "\2665";
-    margin-right: 0.4em;
-    margin-left: 0.4em;
-    padding: none;
-}
-
+/*
 .card span.hit_points:after {
     color: black;
     content: "/";
@@ -158,15 +167,20 @@ h1 {
     margin-left: 0.1em;
     padding: none;
 }
+*/
 
 .card img.character_profile_image {
-    width: 7em;
+    width: 8em;
     padding: 0.1em;
     margin: 0.4em auto;
     background-color: white;
     display: block;
     margin-left: auto;
     margin-right: auto
+
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
 }
 
 .card h2 {
